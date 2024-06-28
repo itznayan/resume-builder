@@ -2,6 +2,7 @@ import { useUser } from "@clerk/clerk-react";
 import { Button } from "./components/ui/button";
 import { Navigate, Outlet } from "react-router-dom";
 import Header from "./components/ui/custom/Header";
+import Dashboard from "./dashboard";
 
 const App = () => {
   const { user, isLoaded, isSignedIn } = useUser();
