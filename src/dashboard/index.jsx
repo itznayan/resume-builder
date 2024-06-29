@@ -20,7 +20,7 @@ const Dashboard = () => {
   const getResumeList = () => {
     GlobalApi.GetUserResume(user?.primaryEmailAddress?.emailAddress)
       .then((resp) => {
-        setResumeList(resp.data.data);
+        setResumeList(resp.data.data.id);
         // Handle the response data as needed
       })
       .catch((error) => {
