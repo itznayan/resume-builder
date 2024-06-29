@@ -7,26 +7,22 @@ import ResumeItemCard from "./components/ResumeItemCard";
 
 const Dashboard = () => {
   const [resumeList, setResumeList] = useState([]);
-
   const { user } = useUser();
+
   useEffect(() => {
     if (user) {
-      getResumeList();
+      GetResumesList();
     }
   }, [user]);
 
-  //used to get user resume list
+  //left strapi setup id problem
 
-  const getResumeList = () => {
-    GlobalApi.GetUserResume(user?.primaryEmailAddress?.emailAddress)
-      .then((resp) => {
-        setResumeList(resp.data.data.id);
-        // Handle the response data as needed
-      })
-      .catch((error) => {
-        console.error("Error fetching user resume:", error);
-        // Handle errors appropriately
-      });
+  const GetResumesList = () => {
+    GlobalApi.GetUserResumes(user?.primaryEmailAddress?.emailAddress).then(
+      (resp) => {
+        setResumeList(resp.data.data);
+      }
+    );
   };
 
   const Animate = {
