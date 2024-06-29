@@ -14,12 +14,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import GlobalApi from "../../../service/GlobalApi";
 import { useUser } from "@clerk/clerk-react";
+import { useNavigate, useNavigation } from "react-router-dom";
 
 const AddResume = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [resumeTitle, setResumeTitle] = useState();
   const [loading, setLoading] = useState(false);
-
+  const navigation = useNavigate();
   const { user } = useUser();
 
   const onCreate = () => {
@@ -36,9 +37,10 @@ const AddResume = () => {
     };
     GlobalApi.CreateNewResume(data).then(
       (resp) => {
-        console.log(resp);
+        console.log(resp); // Log the response to inspect its structure
         if (resp) {
           setLoading(false);
+          navigation("/dashboard/resume/" + resp.data.data.id + "/edit");
         }
       },
       (error) => {
@@ -54,12 +56,12 @@ const AddResume = () => {
         <Tilt options={{ max: 55, scale: 1, speed: 450 }}>
           <div
             onClick={() => setOpenDialog(true)}
-            className="flex items-center hover:scale-105 duration-300 hover:border-dashed hover:shadow-lg hover:shadow-neutral-400 cursor-pointer justify-center py-24 mt-10 border px-14 rounded-2xl bg-slate-200 h-[280px]"
+            className="flex items-center hover:scale-105 duration-300 hover:border-dashed  cursor-pointer justify-center py-24 mt-10 border px-14 rounded-2xl bg-slate-200 h-[280px]"
           >
             <PlusSquare />
           </div>
+          <p className="px-2 py-1 text-center font-semibold">Add New Resume</p>
         </Tilt>
-
         <Dialog open={openDialog}>
           <DialogContent>
             <DialogHeader>

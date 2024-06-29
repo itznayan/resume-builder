@@ -1,6 +1,34 @@
+import { useUser } from "@clerk/clerk-react";
 import AddResume from "./components/AddResume";
 import { motion } from "framer-motion";
+import GlobalApi from "../../service/GlobalApi";
+import { useEffect, useState } from "react";
+import ResumeItemCard from "./components/ResumeItemCard";
+
 const Dashboard = () => {
+  const [resumeList, setResumeList] = useState([]);
+
+  const { user } = useUser();
+  useEffect(() => {
+    if (user) {
+      getResumeList();
+    }
+  }, [user]);
+
+  //used to get user resume list
+
+  const getResumeList = () => {
+    GlobalApi.GetUserResume(user?.primaryEmailAddress?.emailAddress)
+      .then((resp) => {
+        setResumeList(resp.data.data);
+        // Handle the response data as needed
+      })
+      .catch((error) => {
+        console.error("Error fetching user resume:", error);
+        // Handle errors appropriately
+      });
+  };
+
   const Animate = {
     initial: {
       opacity: 0,
@@ -35,9 +63,22 @@ const Dashboard = () => {
         initial="initial"
         animate="animate"
         transition={{ delay: 1 }}
-        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5"
       >
         <AddResume />
+
+        {resumeList.length > 0 &&
+          resumeList.map((resume, index) => (
+            <motion.div
+              variants={Animate}
+              initial="initial"
+              animate="animate"
+              transition={{ delay: 0.6 * index }}
+              key={index}
+            >
+              <ResumeItemCard resume={resume} />
+            </motion.div>
+          ))}
       </motion.div>
     </div>
   );
