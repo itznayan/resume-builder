@@ -8,12 +8,20 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 const AddResume = () => {
   const [openDialog, setOpenDialog] = useState(false);
+  const [resumeTitle, setResumeTitle] = useState();
+
+  const onCreate = () => {
+    const uuid = uuidv4();
+    console.log(resumeTitle, uuid);
+    setOpenDialog(false);
+  };
   return (
     <>
       <div>
@@ -33,15 +41,18 @@ const AddResume = () => {
               <DialogDescription>
                 <p>Add Title For Resume</p>
                 <Input
+                  onChange={(e) => setResumeTitle(e.target.value)}
                   className="mt-2 border-black focus:border-none"
                   placeholder="Ex.Frontend Resume"
                 />
               </DialogDescription>
-              <div className="flex justify-end gap-5">
+              <div className="flex justify-end gap-5 p-2">
                 <Button onClick={() => setOpenDialog(false)} variant="ghost">
                   Cancel
                 </Button>
-                <Button>Create</Button>
+                <Button disabled={!resumeTitle} onClick={() => onCreate()}>
+                  Create
+                </Button>
               </div>
             </DialogHeader>
           </DialogContent>
