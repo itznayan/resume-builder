@@ -20,7 +20,9 @@ const Header = () => {
           <Link to={"/dashboard"}>
             <Button>Dashboard</Button>
           </Link>
-          <UserButton />
+          <div className="bg-gray-200 flex justify-center items-center p-[3px] rounded-full">
+            <UserButton />
+          </div>
         </div>
       ) : (
         <Link to={"./auth/sign-in"}>
