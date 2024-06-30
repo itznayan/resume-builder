@@ -4,6 +4,7 @@ import FormSection from "../../components/FormSection";
 import ResumePreview from "../../components/ResumePreview";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
 import dummy from "@/data/dummy";
+import { motion } from "framer-motion";
 const EditResume = () => {
   const [resumeInfo, setResumeInfo] = useState(dummy);
 

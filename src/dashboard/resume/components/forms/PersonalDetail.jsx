@@ -66,6 +66,7 @@ const PersonalDetail = ({ isNext }) => {
             <Input
               className="mt-1"
               name="firstName"
+              defaultValue={resumeInfo?.firstName}
               required
               onChange={handleInputChange}
             />
@@ -76,6 +77,7 @@ const PersonalDetail = ({ isNext }) => {
               Last Name
             </label>
             <Input
+              defaultValue={resumeInfo?.lastName}
               className="mt-1"
               name="lastName"
               required
@@ -88,6 +90,7 @@ const PersonalDetail = ({ isNext }) => {
               Job Title
             </label>
             <Input
+              defaultValue={resumeInfo?.jobTitle}
               className="mt-1"
               name="jobTitle"
               required
@@ -100,6 +103,7 @@ const PersonalDetail = ({ isNext }) => {
               Address
             </label>
             <Input
+              defaultValue={resumeInfo?.address}
               className="mt-1"
               name="address"
               required
@@ -112,6 +116,7 @@ const PersonalDetail = ({ isNext }) => {
               Phone
             </label>
             <Input
+              defaultValue={resumeInfo?.phone}
               className="mt-1"
               name="phone"
               required
@@ -124,6 +129,7 @@ const PersonalDetail = ({ isNext }) => {
               Email
             </label>
             <Input
+              defaultValue={resumeInfo?.email}
               className="mt-1"
               name="email"
               required

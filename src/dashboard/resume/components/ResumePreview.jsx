@@ -5,11 +5,17 @@ import SummeryPreview from "./preview/SummeryPreview";
 import ProExperiencePreview from "./preview/ProExperiencePreview";
 import EducationalPreview from "./preview/EducationalPreview";
 import SkillPreview from "./preview/SkillPreview";
-
+import { motion } from "framer-motion";
 const ResumePreview = () => {
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, x: -500, rotate: 90 }}
+      animate={{ opacity: 1, x: 0, rotate: 0 }}
+      transition={{
+        duration: 0.45,
+        type: "spring",
+      }}
       className="shadow-lg h-full p-14 border-t-[20px]"
       style={{
         borderColor: resumeInfo?.themeColor,
@@ -26,7 +32,7 @@ const ResumePreview = () => {
 
       {/* {Skills} */}
       <SkillPreview resumeInfo={resumeInfo} />
-    </div>
+    </motion.div>
   );
 };
 
