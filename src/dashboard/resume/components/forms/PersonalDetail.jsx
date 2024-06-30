@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GlobalApi from "../../../../../service/GlobalApi";
 import { LoaderCircle } from "lucide-react";
+import { toast } from "sonner";
 
 const PersonalDetail = ({ isNext }) => {
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
@@ -43,6 +44,7 @@ const PersonalDetail = ({ isNext }) => {
         console.log(resp);
         isNext(true);
         setLoading(false);
+        toast("Personal detail added successfully.");
       },
       (error) => {
         setLoading(false);
