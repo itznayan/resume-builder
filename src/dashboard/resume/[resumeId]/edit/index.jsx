@@ -9,7 +9,7 @@ const EditResume = () => {
 
   const params = useParams();
   useEffect(() => {
-    console.log(params.resumeId);
+    // console.log(params.resumeId);
   }, []);
 
   return (
