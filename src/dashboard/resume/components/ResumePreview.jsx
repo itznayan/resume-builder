@@ -13,7 +13,7 @@ const ResumePreview = () => {
       initial={{ opacity: 0, x: -500, rotate: 90 }}
       animate={{ opacity: 1, x: 0, rotate: 0 }}
       transition={{
-        duration: 0.45,
+        duration: 0.65,
         type: "spring",
       }}
       className="shadow-lg h-full p-14 border-t-[20px]"

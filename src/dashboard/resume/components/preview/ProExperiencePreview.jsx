@@ -22,11 +22,17 @@ const ProExperiencePreview = ({ resumeInfo }) => {
             {experiences?.companyName}, {experiences?.city},{experiences?.state}
             <span>
               {experiences?.startDate}
-              {" - "}
+              {" To "}
               {experiences?.currentlyWorking ? "Present" : experiences.endDate}
             </span>
           </h2>
-          <p className="text-xs my-2">{experiences.workSummery}</p>
+
+          {/* <p className="text-xs my-2">{experiences.workSummery}</p> */}
+
+          <div
+            className="text-xs font-medium"
+            dangerouslySetInnerHTML={{ __html: experiences?.workSummery }}
+          />
         </div>
       ))}
     </div>

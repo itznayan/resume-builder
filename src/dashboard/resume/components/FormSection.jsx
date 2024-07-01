@@ -4,6 +4,7 @@ import { Button } from "../../../components/ui/button";
 import { ArrowLeft, ArrowRight, LayoutGrid } from "lucide-react";
 import Summery from "./forms/Summery";
 import { motion } from "framer-motion";
+import Experience from "./forms/Experience";
 const FormSection = () => {
   const [activeIndexFormIndex, setActiveIndexFormIndex] = useState(1);
 
@@ -14,7 +15,7 @@ const FormSection = () => {
       initial={{ opacity: 0, x: -500, rotate: -90 }}
       animate={{ opacity: 1, x: 0, rotate: 0 }}
       transition={{
-        duration: 0.4,
+        duration: 0.65,
       }}
     >
       <div className="flex justify-between items-center">
@@ -43,15 +44,20 @@ const FormSection = () => {
       </div>
 
       {/* Personal Detail  */}
+
       {activeIndexFormIndex == 1 ? (
         <PersonalDetail isNext={(v) => setIsNext(v)} />
       ) : null}
 
       {/* Summery */}
+
       {activeIndexFormIndex == 2 ? (
         <Summery isNext={(v) => setIsNext(v)} />
       ) : null}
+
       {/* Experience */}
+
+      {activeIndexFormIndex == 3 ? <Experience /> : null}
 
       {/* educational Detail */}
 
