@@ -41,7 +41,7 @@ const PersonalDetail = ({ isNext }) => {
 
     GlobalApi.UpdateResumeDetail(params?.resumeId, data).then(
       (resp) => {
-        console.log(resp);
+        // console.log(resp);
         isNext(true);
         setLoading(false);
         toast("Personal detail added successfully.");

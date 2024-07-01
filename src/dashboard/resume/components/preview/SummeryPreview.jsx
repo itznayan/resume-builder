@@ -3,7 +3,7 @@ import React from "react";
 const SummeryPreview = ({ resumeInfo }) => {
   return (
     <div>
-      <p>{resumeInfo?.summery}</p>
+      <p className="text-sm">{resumeInfo?.summery}</p>
     </div>
   );
 };

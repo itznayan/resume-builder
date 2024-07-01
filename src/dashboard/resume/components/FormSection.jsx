@@ -48,7 +48,9 @@ const FormSection = () => {
       ) : null}
 
       {/* Summery */}
-      {activeIndexFormIndex == 2 ? <Summery /> : null}
+      {activeIndexFormIndex == 2 ? (
+        <Summery isNext={(v) => setIsNext(v)} />
+      ) : null}
       {/* Experience */}
 
       {/* educational Detail */}
