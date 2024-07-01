@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ResumeInfoContext } from "../../../../context/ResumeInfoContext";
+import { ResumeInfoContext } from "../../../context/ResumeInfoContext";
 import { Brain, LoaderCircle } from "lucide-react";
 import React, { useContext, useState } from "react";
 import {
@@ -16,13 +16,14 @@ import {
   Separator,
   Toolbar,
 } from "react-simple-wysiwyg";
-import { AIChatSession } from "../../../../../service/AIModal";
+import { AIChatSession } from "../../../../service/AIModal";
 import { toast } from "sonner";
+
+const PROMPT =
+  "position title: {positionTitle} , Depends on position title give me 5-7 bullet points for my experience in resume (Please do not add experince level and No JSON array) , give me result in HTML tags";
 
 const RichTextEditor = ({ onRichTextEditorChange, index }) => {
   const [value, setValue] = useState();
-  const PROMPT =
-    "position titile: {positionTitle} , Depends on position title give me 5-7 bullet points for my experience in resume (Please do not add experince level and No JSON array) , give me result in HTML tags";
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
   const [loading, setLoading] = useState(false);
 
@@ -37,15 +38,17 @@ const RichTextEditor = ({ onRichTextEditorChange, index }) => {
       "{positionTitle}",
       resumeInfo.experience[index].title
     );
-    const result = await AIChatSession.sendMessage(prompt);
-    // console.log(result.response.text());
+    const result = await AIChatSession.sendMessage(
+      PROMPT.replace("{positionTitle}", resumeInfo.experience[index].title)
+    );
+    setValue(result.response.text());
+    //console.log(result.response.text());
     //const resp = result.response.text();
 
     const resp = JSON.parse(result.response.text());
 
+    console.log(resp);
     const respd = resp.experience[0] + resp.experience[1] + resp.experience[2];
-
-    console.log(respd);
     setValue(respd.replace("[", "").replace("]", ""));
     setLoading(false);
   };
