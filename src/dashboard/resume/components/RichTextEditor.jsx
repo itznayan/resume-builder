@@ -20,7 +20,7 @@ import { AIChatSession } from "../../../../service/AIModal";
 import { toast } from "sonner";
 
 const PROMPT =
-  "position title: {positionTitle} , Depends on position title give me 5-7 bullet points for my experience in resume (Please do not add experince level and No JSON array) , give me result in HTML tags";
+  "position title: {positionTitle} , Depends on position title give me 5-7 bullet points for my experience in resume (Please do not add experience level and No JSON array) , give me result in HTML tags";
 
 const RichTextEditor = ({ onRichTextEditorChange, index }) => {
   const [value, setValue] = useState();
@@ -43,13 +43,13 @@ const RichTextEditor = ({ onRichTextEditorChange, index }) => {
     );
     setValue(result.response.text());
     //console.log(result.response.text());
-    //const resp = result.response.text();
+    const resp = result.response.text();
 
-    const resp = JSON.parse(result.response.text());
+    //const resp = JSON.parse(result.response.text());
 
     console.log(resp);
-    const respd = resp.experience[0] + resp.experience[1] + resp.experience[2];
-    setValue(respd.replace("[", "").replace("]", ""));
+    // const respd = resp.experience[0] + resp.experience[1] + resp.experience[2];
+    // setValue(resp.replace("[", "").replace("]", ""));
     setLoading(false);
   };
 

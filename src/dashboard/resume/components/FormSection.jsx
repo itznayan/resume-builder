@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, LayoutGrid } from "lucide-react";
 import Summery from "./forms/Summery";
 import { motion } from "framer-motion";
 import Experience from "./forms/Experience";
+import Education from "./forms/Education";
 const FormSection = () => {
   const [activeIndexFormIndex, setActiveIndexFormIndex] = useState(1);
 
@@ -60,6 +61,8 @@ const FormSection = () => {
       {activeIndexFormIndex == 3 ? <Experience /> : null}
 
       {/* educational Detail */}
+
+      {activeIndexFormIndex == 4 ? <Education /> : null}
 
       {/* Skills */}
     </motion.div>
