@@ -33,8 +33,9 @@ const FormSection = () => {
               <ArrowLeft />
             </Button>
           )}
+
+          {/* disabled={loading} */}
           <Button
-            disabled={!isNext}
             onClick={() => setActiveIndexFormIndex(activeIndexFormIndex + 1)}
             className="flex gap-2"
             size="sm"
