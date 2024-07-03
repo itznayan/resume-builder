@@ -6,6 +6,7 @@ import Summery from "./forms/Summery";
 import { motion } from "framer-motion";
 import Experience from "./forms/Experience";
 import Education from "./forms/Education";
+import Skills from "./forms/Skills";
 const FormSection = () => {
   const [activeIndexFormIndex, setActiveIndexFormIndex] = useState(1);
 
@@ -66,6 +67,8 @@ const FormSection = () => {
       {activeIndexFormIndex == 4 ? <Education /> : null}
 
       {/* Skills */}
+
+      {activeIndexFormIndex == 5 ? <Skills /> : null}
     </motion.div>
   );
 };
