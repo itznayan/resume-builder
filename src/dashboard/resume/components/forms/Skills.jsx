@@ -67,6 +67,10 @@ const Skills = () => {
       skills: skillsList,
     });
   }, [skillsList]);
+
+  useEffect(() => {
+    resumeInfo && setSkillsList(resumeInfo?.skills);
+  }, []);
   return (
     <div className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
       <h2 className="font-bold text-lg">Skills</h2>
@@ -78,6 +82,7 @@ const Skills = () => {
             <div>
               <label className="text-sm">Name</label>
               <Input
+                defaultValue={skill.name}
                 className="w-full"
                 onChange={(e) => handleChange(index, "name", e.target.value)}
               />

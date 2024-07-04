@@ -51,6 +51,10 @@ const Experience = () => {
     setExperienceList(newEntries);
   };
 
+  useEffect(() => {
+    resumeInfo && setExperienceList(resumeInfo?.experience);
+  }, []);
+
   const onSave = () => {
     setLoading(true);
     const data = {

@@ -77,6 +77,10 @@ const Education = () => {
     setEducationalList(newEntries);
   };
 
+  useEffect(() => {
+    resumeInfo && setEducationalList(resumeInfo?.education);
+  }, []);
+
   return (
     <div>
       <div className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
@@ -91,12 +95,14 @@ const Education = () => {
                   <Input
                     name="universityName"
                     onChange={(e) => handleChange(index, e)}
+                    defaultValue={item?.universityName}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="">Degree </label>
                   <Input
+                    defaultValue={item?.degree}
                     name="degree"
                     onChange={(e) => handleChange(index, e)}
                   />
@@ -104,6 +110,7 @@ const Education = () => {
                 <div>
                   <label htmlFor="">Major</label>
                   <Input
+                    defaultValue={item?.major}
                     name="major"
                     onChange={(e) => handleChange(index, e)}
                   />
@@ -114,6 +121,7 @@ const Education = () => {
                   <Input
                     type="date"
                     name="startDate"
+                    defaultValue={item?.startDate}
                     onChange={(e) => handleChange(index, e)}
                   />
                 </div>
@@ -122,6 +130,7 @@ const Education = () => {
                   <Input
                     type="date"
                     name="endDate"
+                    defaultValue={item?.endDate}
                     onChange={(e) => handleChange(index, e)}
                   />
                 </div>
@@ -129,6 +138,7 @@ const Education = () => {
                   <label htmlFor="">Description</label>
                   <Textarea
                     name="description"
+                    defaultValue={item?.description}
                     onChange={(e) => handleChange(index, e)}
                   />
                 </div>

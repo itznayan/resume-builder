@@ -82,6 +82,7 @@ const Summery = ({ isNext }) => {
             required
             onChange={(e) => setSummery(e.target.value)}
             className="mt-6"
+            defaultValue={summery ? summery : resumeInfo?.summery}
           />
 
           <div className="mt-4 flex  justify-end">

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import PersonalDetail from "./forms/PersonalDetail";
 import { Button } from "../../../components/ui/button";
-import { ArrowLeft, ArrowRight, LayoutGrid } from "lucide-react";
+import { ArrowLeft, ArrowRight, HomeIcon, LayoutGrid } from "lucide-react";
 import Summery from "./forms/Summery";
 import { motion } from "framer-motion";
 import Experience from "./forms/Experience";
 import Education from "./forms/Education";
 import Skills from "./forms/Skills";
+import { Link } from "react-router-dom";
 const FormSection = () => {
   const [activeIndexFormIndex, setActiveIndexFormIndex] = useState(1);
 
@@ -21,10 +22,17 @@ const FormSection = () => {
       }}
     >
       <div className="flex justify-between items-center">
-        <Button className="bg-gray-100" variant="outline">
-          <LayoutGrid />
-          Theme
-        </Button>
+        <div className="gap-2 flex">
+          <Link to={"/dashboard"}>
+            <Button>
+              <HomeIcon />
+            </Button>
+          </Link>
+          <Button className="bg-gray-100" variant="outline">
+            <LayoutGrid />
+            Theme
+          </Button>
+        </div>
         <div className="flex gap-1">
           {activeIndexFormIndex > 1 && (
             <Button

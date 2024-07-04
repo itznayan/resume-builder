@@ -10,7 +10,7 @@ const ProExperiencePreview = ({ resumeInfo }) => {
         Professional Experience
       </h2>
       <hr style={{ borderColor: resumeInfo?.themeColor }} />
-      {resumeInfo?.experience.map((experiences, index) => (
+      {resumeInfo?.experience?.map((experiences, index) => (
         <div key={index} className="my-10">
           <h2
             className="text-sm font-bold"
