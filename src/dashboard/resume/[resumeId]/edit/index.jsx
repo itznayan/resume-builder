@@ -19,7 +19,7 @@ const EditResume = () => {
 
   const GetResumeInfo = () => {
     GlobalApi.GetResumeById(resumeId).then((resp) => {
-      console.log(resp.data.data.attributes);
+      // console.log(resp.data.data.attributes);
       setResumeInfo(resp.data.data.attributes);
     });
   };

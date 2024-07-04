@@ -15,8 +15,6 @@ const Dashboard = () => {
     }
   }, [user]);
 
-  //left strapi setup id problem
-
   const GetResumesList = () => {
     GlobalApi.GetUserResumes(user?.primaryEmailAddress?.emailAddress).then(
       (resp) => {
@@ -72,7 +70,7 @@ const Dashboard = () => {
               transition={{ delay: 0.6 * index }}
               key={index}
             >
-              <ResumeItemCard resume={resume} />
+              <ResumeItemCard resume={resume} refreshData={GetResumesList} />
             </motion.div>
           ))}
       </motion.div>

@@ -7,10 +7,11 @@ import { motion } from "framer-motion";
 import Experience from "./forms/Experience";
 import Education from "./forms/Education";
 import Skills from "./forms/Skills";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
+import ThemeColor from "./ThemeColor";
 const FormSection = () => {
   const [activeIndexFormIndex, setActiveIndexFormIndex] = useState(1);
-
+  const { resumeId } = useParams();
   const [isNext, setIsNext] = useState(false);
 
   return (
@@ -28,16 +29,15 @@ const FormSection = () => {
               <HomeIcon />
             </Button>
           </Link>
-          <Button className="bg-gray-100" variant="outline">
-            <LayoutGrid />
-            Theme
-          </Button>
+          <ThemeColor />
         </div>
         <div className="flex gap-1">
           {activeIndexFormIndex > 1 && (
             <Button
               onClick={() => setActiveIndexFormIndex(activeIndexFormIndex - 1)}
               size="sm"
+              className="bg-gray-100"
+              variant="outline"
             >
               <ArrowLeft />
             </Button>
@@ -77,6 +77,10 @@ const FormSection = () => {
       {/* Skills */}
 
       {activeIndexFormIndex == 5 ? <Skills /> : null}
+
+      {activeIndexFormIndex == 6 ? (
+        <Navigate to={"/my-resume/" + resumeId + "/view"}></Navigate>
+      ) : null}
     </motion.div>
   );
 };
